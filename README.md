@@ -11,6 +11,16 @@ As I have a degree in electronics and recently started little projects with Ardu
 
 With these in mind, I am starting to learn how each electronic component. I start with SG90 micro servo motor below, which is commercially available.
 
+## Materials
+<p align = "center"><img src = "Images/schematics.png"></p>
+<p align = "center"><b>Figure 2.</b> Circuit schematic for SG90 potentiometer control, created using <h href = "https://www.tinkercad.com">Tinkercad</h>. It is recommended to have a separate power supply for the SG90 micro servo motor because it drains a lot of current, and might destroy the Arduino UNO microcontroller if connected directly to its 5-V pin.</p>
+
+- SG90 micro servo motor
+- Arduino UNO microcontroller
+- 10k&Omega; potentiometer
+- Connector wires
+- External power supply (breadboard power supply is possible)
+
 ## Code Description
 
 Note that the PWM period does not matter as long as the ON time is specified to the corresponding angle duration to which the shaft rotates (e.g. 2.4 ms for 180&deg; rotation, and see reference). To avoid possible glitches due to possible small changes, set a threshold.
@@ -38,7 +48,6 @@ void setup() {
   pinMode(pin_potentiometer, INPUT);
   Serial.begin(9600);
   period_ref = micros();
-
 }
 ```
 ## Inside the loop
