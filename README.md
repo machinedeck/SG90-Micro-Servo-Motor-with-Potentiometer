@@ -2,7 +2,7 @@
 <p align = "center"><img src = "Images/sg90-tinkercad.png"></p>
 <p align = "center"><b>Figure 1.</b> SG90 micro servo motor setup designed in <a href = "https://www.tinkercad.com">Tinkercad</a>. Test and try the circuit through this <a href = "https://www.tinkercad.com/things/as3s0rsZMul-sg90-micro-servo-control-with-potentiometer?sharecode=aHOOacvLJhVkbbtP7IE3Dn5av6y1MOTj1NUGFpsI-eQ">simulation</a>.</p>
 
-# Background
+## Background
 Frankenstein is one of my favorite novels because it encapsulates themes of adventure, mystery, and science. The creation process of Victor's "monster" was the most interesting part, describing the arduous and systematic procedure through which he underwent. The galvanizing moment the monster awakened is also the moment my curiosity in autonomous systems awakened. I am very much interested in robots and machine, as much as the Czech word "_stroj_" is one of my favorite words ("_robot_" actually originates from Czech as well). These have led me to&mdash;not to create my own living creature&mdash;design systems that can move, and possibly think.
 
 As I have a degree in electronics and recently started little projects with Arduino, it would be interesting to embark on an exciting challenge of creating my own robot. To achieve this, I have to determine the necessary components to build a robot, and learn how they operate. I do not yet know what kind of robot I am aiming for, but I envision it to have a mechanical and computational parts. Hence, eumerated below are the components that will be of use for each part:
