@@ -1,3 +1,5 @@
+Note that the PWM period does not matter as long as the ON time is specified to the corresponding angle duration to which the shaft rotates (e.g. 2.4 ms for 180$^\circ$ rotation). To avoid possible glitches due to possible small changes, set a threshold.
+
 Initialize the parameters:
 ```c
 int pin_servo = 7;
@@ -46,7 +48,7 @@ else {
   }
 }
 ```
-During the off state, take this time to read the potentiometer:
+During the off state, take this time to read the potentiometer and define a threshold:
 ```c
 unsigned long val = 1900L * analogRead(pin_potentiometer) / 1023 + 500;
 if (abs(val - old_val) > threshold) {
