@@ -1,3 +1,6 @@
+# SG90 Micro Servo Control Using a 10k&Omega; Potentiometer
+<p align = "center"><img src = "Images/sg90-tinkercad.png"></p>
+<p align = "center"><b>Figure 1.</b> SG90 micro servo motor setup designed in <a href = "https://www.tinkercad.com">Tinkercad</a>. Test and try the circuit through this <a href = "https://www.tinkercad.com/things/as3s0rsZMul-sg90-micro-servo-control-with-potentiometer?sharecode=aHOOacvLJhVkbbtP7IE3Dn5av6y1MOTj1NUGFpsI-eQ">simulation</a>.</p>
 Note that the PWM period does not matter as long as the ON time is specified to the corresponding angle duration to which the shaft rotates (e.g. 2.4 ms for 180&deg; rotation, and see reference). To avoid possible glitches due to possible small changes, set a threshold.
 
 Initialize the parameters:
