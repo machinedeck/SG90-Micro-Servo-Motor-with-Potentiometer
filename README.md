@@ -1,4 +1,4 @@
-Note that the PWM period does not matter as long as the ON time is specified to the corresponding angle duration to which the shaft rotates (e.g. 2.4 ms for 180$^\circ$ rotation). To avoid possible glitches due to possible small changes, set a threshold.
+Note that the PWM period does not matter as long as the ON time is specified to the corresponding angle duration to which the shaft rotates (e.g. 2.4 ms for 180&deg; rotation). To avoid possible glitches due to possible small changes, set a threshold.
 
 Initialize the parameters:
 ```c
