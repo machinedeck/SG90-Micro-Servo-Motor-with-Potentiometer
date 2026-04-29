@@ -135,3 +135,6 @@ void loop() {
 }
 
 ```
+
+## Problems
+At zero degree, I noticed some fast glitching. Maybe check this one.
