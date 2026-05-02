@@ -21,9 +21,14 @@ With these in mind, I am starting to learn how each electronic component. I star
 - Connector wires
 - External power supply (breadboard power supply is possible)
 
+### SG90 Micro Servo Motor
+I will just enumerate the important properties of the SG90 micro servo motor here, but all the information can be found in this [datasheet](https://handsontec.com/dataspecs/motor_fan/SG90-Servo.pdf). The power of SG90 will come from the 5V-pin of the breadboard power supply module to avoid draining too much current and damaging the Arduino UNO board. The PWM period is set to 20 ms and direction to which the shaft rotates will depend on how long the PWM signal is ON, which is referred to here as the **pulse width**. Shaft rotation from 0&deg;-180&deg; requires a pulse width range of 500-2400 &mu;s. The pulse width is controlled mechanically by a potentiometer so that this action imitates the actual rotation of SG90.
+
+This potentiometer control is achieved by adjusting the output voltage from 0-5V, which is fed into the Arduino board and converted into 500-2400 &mu;s. However, the initial code experienced a continuous jitter at 0V so I slightly modified the pulse width range to 550-2400 &mu;s.
+
 ## Code Description
 
-Note that the PWM period does not matter as long as the ON time is specified to the corresponding angle duration to which the shaft rotates (e.g. 2.4 ms for 180&deg; rotation, and see reference). To avoid possible glitches due to possible small changes, set a threshold.
+<!-- Note that the PWM period does not matter as long as the ON time is specified to the corresponding angle duration to which the shaft rotates (e.g. 2.4 ms for 180&deg; rotation, and see reference). To avoid possible glitches due to possible small changes, set a threshold. !-->
 
 Initialize the parameters:
 ```c
@@ -32,7 +37,7 @@ int pin_potentiometer = A0;
 unsigned long period_ref;
 unsigned long pwm_period = 20000;
 unsigned long on_length = 2400;
-unsigned long old_val = on_length;
+// unsigned long old_val = on_length;
 int threshold = 5;
 ```
 where
@@ -74,7 +79,7 @@ else {
 ```
 During the off state, take this time to read the potentiometer and define a threshold:
 ```c
-unsigned long val = 1900L * analogRead(pin_potentiometer) / 1023 + 500;
+unsigned long val = 1850L * analogRead(pin_potentiometer) / 1023 + 550;
 if (abs(val - old_val) > threshold) {
     on_length = val;
     old_val = val;
@@ -112,7 +117,7 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   unsigned long time = micros();
-  // on_length = 1900 * analogRead(pin_potentiometer) / 1023 + 500;
+  // on_length = 1850 * analogRead(pin_potentiometer) / 1023 + 550;
   // Serial.println(String(analogRead(pin_potentiometer)) + ", " + String(on_length));
   
   if (time - period_ref <= pwm_period) {
@@ -137,4 +142,4 @@ void loop() {
 ```
 
 ## Problems
-At zero degree, I noticed some fast glitching. Maybe check this one.
+At zero degree, I noticed some fast glitching. Maybe check this one. -> **Resolved**
