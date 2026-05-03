@@ -1,5 +1,71 @@
 # Scanning Functionality of SG90 Micro Servo Motor
 
+## Code Explanation
+### Parameter Initialization
+First, define the timing parameters. The PWM signal has a cycle period of 20 ms, and the pulse width is determines at which angle the servo motor rotates. SG90's possible rotation angle range is 0&deg;-180&deg;, which corresponds to a pulse width range of approximately 0.5-2.4 ms (check datasheet [here](https://handsontec.com/dataspecs/motor_fan/SG90-Servo.pdf)). However, I observed some jitter at 0.5-ms pulse width, so I increased the lower bound to 0.55 ms.
+
+For the scanning part where the shaft of SG90 rotates in cycles from 0&deg; to 180&deg; then back to 0&deg;, I defined a pulse width increment of 25 &mu;s every 2 seconds.
+```c
+// Time in microseconds
+unsigned long pwm_period = 20000;
+unsigned long init_width = 550;
+unsigned long inc = 25; // Increment of the pulse width every 2 seconds
+int status = 1;
+unsigned long init_time;
+
+int pwm_pin = 7;
+
+void setup() {
+  // put your setup code here, to run once:
+  pinMode(pwm_pin, OUTPUT);
+  init_time = micros();
+  init_width = 550;
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+
+  // Record the current time
+  unsigned long curr_time = micros();
+
+
+  // This is for rotation at a single angle
+  // This creates the required 20-ms cycle and the pulse width
+  if (curr_time - init_time < pwm_period) {
+    if (curr_time - init_time < init_width) {
+      digitalWrite(pwm_pin, 1);
+    }
+    else {
+      digitalWrite(pwm_pin, 0);
+    }
+  }
+  // This resets the initial time when the cycle is finished
+  else {
+    init_time = micros();
+  }
+
+  // This changes the pulse width every 2 s by incrementing it
+  // This translates to the "scanning" or rotation of the shaft
+  if (curr_time - init_time > 2000000) {
+    if (status == 1) {
+      init_width += inc;
+      if (init_width > 2400) {
+        init_width = 2400;
+        status = - 1;
+      }
+    }
+
+    else if (status == - 1){
+      init_width -= inc;
+      if (init_width < 550) {
+        init_width = 550;
+        status = 1;
+      }
+    }
+  }
+}
+```
+
 
 ## Overall Code
 ```c
