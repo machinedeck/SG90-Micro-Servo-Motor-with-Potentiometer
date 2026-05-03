@@ -20,9 +20,9 @@ Also define the initial time containers to track PWM period and the time period 
 unsigned long init_time;
 unsigned long increment_int_time;
 ```
-&#x26A0;**NOTE:** _I got an error before, and now I think the code can be further simplified. I am not pretty sure if I can change the PWM period length to less or greater than 20 ms (as long as greater than the maximum 2.4 ms pulse width), nor am I sure why SG90 needs a PWM signal to rotate the shaft in a certain direction. But I think at an instant, the shaft can rotate to a particular direction if its pulse width is changed in one cycle. I tried incrementing the pulse width every PWM cycle and it rotated continuously, so I guess the PWM signal is needed to sustain its direction.
+&#x26A0;**NOTE:** _I got an error before, and now I think the code can be further simplified. I am not pretty sure if I can change the PWM period length to less or greater than 20 ms (as long as greater than the maximum 2.4 ms pulse width), nor am I sure why SG90 needs a PWM signal to rotate the shaft in a certain direction. But I think at an instant, the shaft can rotate to a particular direction if its pulse width is changed in one cycle. I tried incrementing the pulse width every PWM cycle and it rotated continuously, so I guess the PWM signal is needed to sustain its direction._
 
-However, I am not sure how long the PWM period or the pulse-width-to-PWM-period ratio is so that when I increment it, it successfully land in its supposed direction._
+_However, I am not sure how long the PWM period or the pulse-width-to-PWM-period ratio is so that when I increment it, it successfully land in its supposed direction._
 
 Lastly, the pin which feeds the PWM signal into the SG90 must be defined:
 ```c
