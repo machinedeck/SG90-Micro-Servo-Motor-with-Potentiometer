@@ -10,4 +10,4 @@ This project is concerned about manually rotating the &mu;SM using a potentiomet
 ## SG90 &mu;SM scanning movement
 &#128279;_Click the link_ [_here_](https://github.com/machinedeck/SG90-Micro-Servo-Motor-with-Potentiometer/blob/main/Activity-2/README.md) _to go to the individual project._
 
-Imagine how radars work? They scan over the entire 360&deg;- or 180&deg; circumference. ThE 180&deg; rotation can be imitated by SG90 &mu;SM, and mounting a ultrasonic sensor essentially turns this into portable and accessible radar! In this project, I explored this functionality and explained the code in detail.
+Imagine how radars work? They scan over the entire 360&deg;- or 180&deg; circumference. The 180&deg; rotation can be imitated by SG90 &mu;SM, and mounting a ultrasonic sensor essentially turns this into portable and accessible radar! In this project, I explored this functionality and explained the code in detail.
